@@ -1,17 +1,22 @@
+<?php
+
+require_once __DIR__ . '/functions.php';
+require_logined_session();
+
+header('Content-Type: text/html; charset=UTF-8');
+
+?>
+
+<!DOCTYPE html>
+<title>会員限定ページ</title>
+<h1>ようこそ,<?=h($_SESSION['username'])?>さん</h1>
+<a href="/logout.php?token=<?=h(generate_token())?>">ログアウト</a>
+
 <html>
 <head><title>PHP TEST</title></head>
 <body>
 
 <?php
-
-function convert_enc($str)
-{
-    $from_enc = 'UTF-8';
-    $to_enc = 'UTF-8';
-
-    return mb_convert_encoding($str, $to_enc, $from_enc);
-}
-
 
 $dsn = 'pgsql:dbname=php_training_database host=172.20.0.35 port=5432';
 $user = 'php_training_user';

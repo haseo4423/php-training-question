@@ -40,7 +40,9 @@ try {
     print('Error:'.$e->getMessage());
     die();
 }
-
+/**
+ * さらにこうする
+ */
 
 $dbh = null;
 

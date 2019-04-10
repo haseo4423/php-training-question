@@ -7,7 +7,9 @@ require_unlogined_session();
 $hashes = [
     'guest' => '$2y$10$jm8SMDdqxHWhqgZ5GY3h8eeb9k7SM/rae4TQ35Ecm30lsByhzqSNO',
 ];
-
+/**
+ * ここもこうする
+ */
 // ユーザから受け取ったユーザ名とパスワード
 $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');

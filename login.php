@@ -5,7 +5,7 @@ require_unlogined_session();
 
 // 事前に生成したユーザごとのパスワードハッシュの配列
 $hashes = [
-    'ユーザ名' => '$2y$10$TThG3fsMJegLJHzVQbz8IeHhvpgBg7P5j6gjQWEUOrKKCtsA9L87G',
+    'guest' => '$2y$10$jm8SMDdqxHWhqgZ5GY3h8eeb9k7SM/rae4TQ35Ecm30lsByhzqSNO',
 ];
 
 // ユーザから受け取ったユーザ名とパスワード
@@ -40,14 +40,19 @@ header('Content-Type: text/html; charset=UTF-8');
 
 ?>
 <!DOCTYPE html>
-<title>ログインページ</title>
-<h1>ログインしてください</h1>
-<form method="post" action="">
-    ユーザ名: <input type="text" name="username" value="">
-    パスワード: <input type="password" name="password" value="">
-    <input type="hidden" name="token" value="<?=h(generate_token())?>">
-    <input type="submit" value="ログイン">
-</form>
+    <head>
+        <title>ログインページ</title>
+    </head>
+    <body>
+        <h1>ログインしてください</h1>
+        <form method="post" action="">
+            ユーザ名: <input type="text" name="username" value="">
+            パスワード: <input type="password" name="password" value="">
+            <input type="hidden" name="token" value="<?=h(generate_token())?>">
+            <input type="submit" value="ログイン">
+        </form>
 <?php if (http_response_code() === 403) : ?>
 <p style="color: red;">ユーザ名またはパスワードが違います</p>
 <?php endif; ?>
+    </body>
+</html>

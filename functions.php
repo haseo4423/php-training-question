@@ -58,18 +58,3 @@ function h($str)
 {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
-
-/**
- * 文字列のencoding関数
- *
- * @param string $str
- * @return string
- */
-
-function convert_enc($str)
-{
-    $from_enc = 'UTF-8';
-    $to_enc = 'UTF-8';
-
-    return mb_convert_encoding($str, $to_enc, $from_enc);
-}

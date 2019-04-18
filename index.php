@@ -10,6 +10,19 @@ header('Content-Type: text/html; charset=UTF-8');
 <!DOCTYPE html>
     <head>
         <title>会員限定ページ</title>
+        <style>
+            table {
+                border: solid 2px black;
+                border-collapse: collapse;
+            }
+            table th {
+                background: #f5f5de;
+                border: solid 2px black;
+            }
+            table td {
+                border: solid 1px black;
+            }
+        </style>
     </head>
     <body>
         <h1>
@@ -26,14 +39,21 @@ $user = 'php_training_user';
 $password = '7890';
 
 try {
+    print('<table>');
+    print('<tr>');
+    print('<th>図鑑番号</th><th>名前</th><th>タイプ1</th><th>タイプ2</th>');
+    print('</tr>');
     $dbh = new PDO($dsn, $user, $password);
     $sql = 'select * from pokemon_status';
     foreach ($dbh->query($sql) as $row) {
-        print($row['dict_num']);
-        print($row['name']);
-        print($row['type1']);
-        print($row['type2'].'<br>');
+        print('<tr>');
+        print('<td>'.$row['dict_num'].'</td>');
+        print('<td>'.$row['name'].'</td>');
+        print('<td>'.$row['type1'].'</td>');
+        print('<td>'.$row['type2'].'</td>');
+        print('</tr>');
     }
+    print('</table>');
 } catch (PDOException $e) {
     print('Error:'.$e->getMessage());
     die();

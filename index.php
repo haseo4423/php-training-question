@@ -41,7 +41,7 @@ $password = '7890';
 try {
     print('<table>');
     print('<tr>');
-    print('<th>図鑑番号</th><th>名前</th><th>タイプ1</th><th>タイプ2</th>');
+    print('<th>図鑑番号</th><th>名前</th><th>タイプ1</th><th>タイプ2</th><th>操作</th>');
     print('</tr>');
     $dbh = new PDO($dsn, $user, $password);
     $sql = 'select * from pokemon_status';
@@ -51,6 +51,7 @@ try {
         print('<td>'.$row['name'].'</td>');
         print('<td>'.$row['type1'].'</td>');
         print('<td>'.$row['type2'].'</td>');
+        print('<td><a href="/detail.php?dict_num='.$row['dict_num'].'">詳細</a></td>');
         print('</tr>');
     }
     print('</table>');

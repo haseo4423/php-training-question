@@ -1,0 +1,1 @@
+\copy pokemon_status(dict_num,name,type1,type2,chara1,chara2,chara_sp,status_hp,status_attack,status_defense,status_spattack,status_spdefense,status_speed,status_sum) FROM '/etc/pokemon_status_for_php_training.csv' WITH CSV HEADER;

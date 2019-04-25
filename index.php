@@ -21,26 +21,18 @@ header('Content-Type: text/html; charset=UTF-8');
                 <a href="/logout.php?token=<?=h(generate_token())?>">ログアウト</a>
             </span>
         </h1>
+        
+        <table width="100%">
+            <tr>
+                <div id="myGrid" style="width:100%;height:700px;"></div>
+            </tr>
+        </table>
 
-<?php
+        <script src="/SlickGrid/lib/jquery-1.11.2.min.js"></script>
+        <script src="/SlickGrid/lib/jquery.event.drag-2.3.0.js"></script>
 
-$dsn = 'pgsql:dbname=php_training_database host=172.20.0.35 port=5432';
-$user = 'php_training_user';
-$password = '7890';
-
-?>
-
-    <table width="100%">
-        <tr>
-            <div id="myGrid" style="width:100%;height:700px;"></div>
-        </tr>
-    </table>
-
-    <script src="/SlickGrid/lib/jquery-1.11.2.min.js"></script>
-    <script src="/SlickGrid/lib/jquery.event.drag-2.3.0.js"></script>
-
-    <script src="/SlickGrid/slick.core.js"></script>
-    <script src="/SlickGrid/slick.grid.js"></script>
+        <script src="/SlickGrid/slick.core.js"></script>
+        <script src="/SlickGrid/slick.grid.js"></script>
 
 <?php
 

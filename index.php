@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/functions.php';
+require_once(dirname(__FILE__).'/common/db_access.php');
 require_logined_session();
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -43,27 +44,23 @@ $password = '7890';
 
 <?php
 
-try {
-    $dbh = new PDO($dsn, $user, $password);
-    $sql = 'select * from pokemon_status';
-    $array = array();
-    foreach ($dbh->query($sql) as $row) {
-        $array[] = array(
-            'dict_num' => $row['dict_num'],
-            'name' => $row['name'],
-            'type1' => $row['type1'],
-            'type2' => $row['type2'],
-            'detail' => '詳細');
-    }
-} catch (PDOException $e) {
-    print('Error:'.$e->getMessage());
-    die();
+// DB接続クラスの生成
+$obj = new DbAccess();
+
+$list_data = $obj->select_all();
+$array = array();
+
+foreach ($list_data as $row) {
+    $array[] = array(
+        'dict_num' => $row['dict_num'],
+        'name' => $row['name'],
+        'type1' => $row['type1'],
+        'type2' => $row['type2'],
+        'detail' => '詳細');
 }
 
 // ポケモンリストをJSON形式に変換
 $json_list = json_encode($array, JSON_UNESCAPED_UNICODE);
-
-$dbh = null;
 
 ?>
 
